@@ -20,7 +20,7 @@ def main(message):
     if message.text == 'Узнать курс валюты':
      msg = bot.send_message(message.chat.id, 'Мы пока можем показать эти валюты:\n'
                                             'США - 1\nЕвро - 2\nКитай - 3\nАрмения - 4\nАвстралия - 5\nАзербайджан - 6.\n\n'
-                                            'Введите название валюты курс которой хотите узнать')
+                                            'Введите номер валюты курс которой хотите узнать')
      bot.register_next_step_handler(msg, currency_show)
 
 
@@ -33,7 +33,7 @@ def currency_show(message):
     string = str(soup.find_all(class_="Table_row__H8plF Table_row-hover__cShKF")[msg-1])
     result = string[string.find('3Dj3x">') + 7:string.find('<!-- -->'):] 
     bot.send_message(message.chat.id, result + ' рубля(ей)')
-    bot.send_message(message.chat.id, 'Если хотите узнать курс другой валюты используейте команду /start')
+    bot.send_message(message.chat.id, 'Если хотите узнать курс другой валюты используйте команду /start')
 
 
 bot.polling(none_stop=True)
